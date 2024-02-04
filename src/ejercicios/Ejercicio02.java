@@ -3,11 +3,18 @@ package ejercicios;
 import java.util.Scanner;
 import helper.Helper;
 
-public class ejercicio2 {
+/**
+ * Ejercicio02
+ */
+public class Ejercicio02 {
 
+	/**
+	 * Metodo main
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		int notasAlumnos[][] = new int[4][5];
-		Scanner sc = new Scanner(System.in);
+		final int notasAlumnos[][] = new int[4][5];
+		final Scanner sc = new Scanner(System.in);
 
 		// Rellenar notas de los alumnos
 		for (int iAlumno = 0; iAlumno < notasAlumnos.length; iAlumno++) {
@@ -25,8 +32,10 @@ public class ejercicio2 {
 		// Imprimir cabecera asignatira X
 		// "Alumno 1 " mide 9
 		System.out.printf("%9s| ", "");
-		for (int i = 0; i <= notasAlumnos.length; i++)
+		for (int i = 0; i <= notasAlumnos.length; i++) {
 			System.out.printf("Asignatura %d | ", i + 1);
+		}
+			
 		System.out.println();
 
 		// Imprimir las notas de los alumnos
@@ -53,6 +62,9 @@ public class ejercicio2 {
 			System.out.printf("%9d |", Helper.findMin(notasAlumnos[i]));
 			System.out.println();
 		}
+		
+		// Cerrar scanner
+		sc.close();
 
 	}
 }

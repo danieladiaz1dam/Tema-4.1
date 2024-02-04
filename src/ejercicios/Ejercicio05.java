@@ -1,76 +1,51 @@
 package ejercicios;
 
-import java.util.Arrays;
-
-import helper.Helper;
-
-public class ejercicio5 {
+/**
+ * Ejercicio05
+ */
+public class Ejercicio05 {
 	/**
-	 * Suma todos los valores de un array
+	 * Metodo Main
 	 * 
-	 * @param arr Array para sumar sus valores
-	 * @return Suma de los valores
+	 * @param args
 	 */
-	public static int suma(int[] arr) {
-		int suma = 0;
-
-		for (int num : arr)
-			suma += num;
-
-		return suma;
-	}
-
-	/**
-	 * "Rota" la matriz, cambia las rows por las columns
-	 * 
-	 * @see <a href="https://mathinsight.org/matrix_transpose">transpose of
-	 *      matrix</a>
-	 * @param mtrx Matriz para rotar
-	 * @return Matrix rotada
-	 */
-	public static int[][] transpose(int mtrx[][]) {
-		int newMtrx[][] = new int[mtrx[0].length][mtrx.length];
-
-		for (int i = 0; i < newMtrx.length; i++) {
-			for (int j = 0; j < newMtrx[i].length; j++) {
-				newMtrx[i][j] = mtrx[j][i];
-			}
-		}
-
-		return newMtrx;
-	}
-
 	public static void main(String[] args) {
 		// Matriz que rellenar y calcular
-		int mtrx[][] = new int[6][5]; // <-- esto esta al reves :)))
+		final int mtrx[][] = new int[4][5];
+		int suma, sumaTotal = 0;
 
 		// Rellenar el array
-		for (int i = 0; i < mtrx.length - 1; i++) {
-			for (int j = 0; j < mtrx[i].length - 1; j++) {
+		for (int i = 0; i < mtrx.length; i++) {
+			for (int j = 0; j < mtrx[i].length; j++) {
 				mtrx[i][j] = (int) (100 + Math.random() * 900); // 100 ~ 999
 			}
 		}
 
-		// Rellenar las sumas de las rows
+		// Calcular las sumas de las rows
 		for (int i = 0; i < mtrx.length; i++) {
-			mtrx[i][mtrx[0].length - 1] = suma(mtrx[i]);
+			suma = 0;
+			for (int j = 0; j < mtrx[i].length; j++) {
+				System.out.printf("%4d ", mtrx[i][j]);
+				suma += mtrx[i][j];
+			}
+			System.out.printf("| %d\n", suma);
 		}
 
-		// Rellenar las sumas de las columns
-		// Transpose para que las colums pasen a ser rows y pueda usar la misma funcion
-		mtrx = transpose(mtrx);
-		for (int i = 0; i < mtrx.length; i++) {
-			mtrx[i][mtrx[0].length - 1] = suma(mtrx[i]);
-		}
+		// Calcular las sumas de las columns
+		System.out.printf("%s\n", "-".repeat(31));
+		for (int j = 0; j < mtrx[0].length; j++) {
+			suma = 0;
 
+			for (int[] fila : mtrx) {
+				for (int value : fila) {
+					suma += value;
+				}
+			}
+
+			sumaTotal += suma;
+			System.out.printf("%4d ", suma);
+		}
+		System.out.printf("| %d", sumaTotal);
 		// Rellenar suma de todo
-		System.out.println();
-		// Sumar en el ultimo espacio la suma de las sumas de las columns menos la
-		// ultima que ya esta
-		mtrx[mtrx.length - 1][mtrx[0].length - 1] += suma(
-				Arrays.copyOfRange(mtrx[mtrx.length - 1], 0, mtrx[0].length - 1));
-
-		// Imprimir matriz
-		Helper.printMtrx(mtrx, 5);
 	}
 }

@@ -2,7 +2,7 @@ package ejercicios;
 
 import helper.Helper;
 
-public class ejercicio4 {
+public class Ejercicio04 {
 	public static int[][] tablasMultiplicar() {
 		int[][] tablas = new int[10][10];
 
