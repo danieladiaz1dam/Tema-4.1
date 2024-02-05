@@ -46,6 +46,5 @@ public class Ejercicio05 {
 			System.out.printf("%4d ", suma);
 		}
 		System.out.printf("| %d", sumaTotal);
-		// Rellenar suma de todo
 	}
 }
